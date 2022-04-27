@@ -1,0 +1,5 @@
+pin(DAT, GPIO5)
+pin(BOOT, GPIO0)
+pin(LED, GPIO4)
+pin(SCL, GPIO14)
+pin(SDA, GPIO2)
