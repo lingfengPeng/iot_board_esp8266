@@ -75,11 +75,11 @@ int key_init(void)
     g_btns = iot_button_create(&key_cfg);
     iot_button_register_cb(g_btns, BUTTON_PRESS_DOWN, button_press_down_cb);
     iot_button_register_cb(g_btns, BUTTON_PRESS_UP, button_press_up_cb);
-    // iot_button_register_cb(g_btns, BUTTON_PRESS_REPEAT, button_press_repeat_cb);
-    // iot_button_register_cb(g_btns, BUTTON_SINGLE_CLICK, button_single_click_cb);
-    // iot_button_register_cb(g_btns, BUTTON_DOUBLE_CLICK, button_double_click_cb);
-    // iot_button_register_cb(g_btns, BUTTON_LONG_PRESS_START, button_long_press_start_cb);
-    // iot_button_register_cb(g_btns, BUTTON_LONG_PRESS_HOLD, button_long_press_hold_cb);
+    iot_button_register_cb(g_btns, BUTTON_PRESS_REPEAT, button_press_repeat_cb);
+    iot_button_register_cb(g_btns, BUTTON_SINGLE_CLICK, button_single_click_cb);
+    iot_button_register_cb(g_btns, BUTTON_DOUBLE_CLICK, button_double_click_cb);
+    iot_button_register_cb(g_btns, BUTTON_LONG_PRESS_START, button_long_press_start_cb);
+    iot_button_register_cb(g_btns, BUTTON_LONG_PRESS_HOLD, button_long_press_hold_cb);
 
     return 0;
 
