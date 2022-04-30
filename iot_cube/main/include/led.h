@@ -9,7 +9,7 @@
  *
  */
 
-int32_t led_init(void);
+int led_init(void);
 int led_on(void);
 int led_off(void);
 int led_toggle(void);

@@ -10,16 +10,13 @@
  */
 
 #include "main.h"
-#include "key.h"
+#include "board.h"
 #include "led.h"
-#include "dht11.h"
 
 void app_main()
 {
+    board_init();
     printf("Hello world!\n");
-    led_init();
-    key_init();
-    dht11_init();
 
     /* Print chip information */
     esp_chip_info_t chip_info;

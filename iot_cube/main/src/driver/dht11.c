@@ -38,11 +38,13 @@ void os_delay_ms(int nms)
     }
 }
 
-void dht11_init(void)
+extern void oled_start(void);
+int dht11_init(void)
 {
     dht11_gpio_init();
-    xTaskCreate((TaskFunction_t)start_dht11_task, (const char *)"dht11_task", (uint16_t)1024, (void *)NULL,
+    int ret = xTaskCreate((TaskFunction_t)start_dht11_task, (const char *)"dht11_task", (uint16_t)1024, (void *)NULL,
                 (UBaseType_t)4, (TaskHandle_t *)NULL);
+    return ret;
 }
 
 static uint8_t dht11_read_bit(void)
@@ -126,6 +128,7 @@ int8_t dht11_read(dht11_data_t *dht11_data)
 static void start_dht11_task(void *pvParameters)
 {
     dht11_data_t dht11_data;
+    oled_start();
 
     while (1) {
         unsigned long tick = xTaskGetTickCount();

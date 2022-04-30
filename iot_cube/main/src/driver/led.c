@@ -14,7 +14,7 @@
 
 #define LED_PIN_MSK (1UL << LED_PIN)
 
-int32_t led_init(void)
+int led_init(void)
 {
     gpio_config_t io_conf;
     io_conf.pin_bit_mask = LED_PIN_MSK;
