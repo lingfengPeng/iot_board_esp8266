@@ -38,7 +38,6 @@ void os_delay_ms(int nms)
     }
 }
 
-extern void oled_start(void);
 int dht11_init(void)
 {
     dht11_gpio_init();
@@ -128,17 +127,16 @@ int8_t dht11_read(dht11_data_t *dht11_data)
 static void start_dht11_task(void *pvParameters)
 {
     dht11_data_t dht11_data;
-    oled_start();
 
     while (1) {
         unsigned long tick = xTaskGetTickCount();
         if (dht11_read(&dht11_data) == 0) {
             humidity = (float)(dht11_data.humi_int * 100 + dht11_data.humi_deci) / 100;
             temperature = (float)(dht11_data.temp_int * 100 + dht11_data.temp_deci) / 100;
-            ESP_LOGI(log_tag, "humidity：%d.%d,temperature:%d.%d", dht11_data.humi_int, dht11_data.humi_deci,
-                     dht11_data.temp_int, dht11_data.temp_deci);
+            // ESP_LOGI(log_tag, "humidity：%d.%d,temperature:%d.%d", dht11_data.humi_int, dht11_data.humi_deci,
+            //          dht11_data.temp_int, dht11_data.temp_deci);
         } else {
-            ESP_LOGI(log_tag, "read dht11 error");
+            // ESP_LOGI(log_tag, "read dht11 error");
         }
 
         vTaskDelayUntil((TickType_t *)&tick, 2000 / portTICK_PERIOD_MS);

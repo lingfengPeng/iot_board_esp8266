@@ -14,11 +14,13 @@
 #include "led.h"
 #include "dht11.h"
 
+extern void sntp_start();
 void board_init(void)
 {
+    led_init();
     key_init();
     dht11_init();
-    led_init();
+    sntp_start();
 }
 
 // static board_init_t board_init_head = NULL;
